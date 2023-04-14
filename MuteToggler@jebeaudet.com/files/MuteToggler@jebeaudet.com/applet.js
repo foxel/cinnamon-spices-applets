@@ -64,11 +64,11 @@ MyApplet.prototype = {
             let cmd = [
                 "bash",
                 "-c",
-                "amixer sget Capture"
+                "pactl get-source-mute `pactl get-default-source`"
                 ];
             Util.spawn_async(cmd, (stdout) => {
                 try{
-                    if(stdout.toString().indexOf("] [on]") != -1){
+                    if(stdout.toString().indexOf(" no") != -1){
                         this.set_not_muted_icon();
                     } else {
                         this.set_muted_icon();
@@ -97,7 +97,7 @@ MyApplet.prototype = {
             let cmd = [
                 "bash",
                 "-c",
-                "amixer set Capture toggle"
+                "pactl set-source-mute `pactl get-default-source` toggle"
             ];
             Util.spawn_async(cmd, (stdout) => {
                 this.is_audio_muted();
