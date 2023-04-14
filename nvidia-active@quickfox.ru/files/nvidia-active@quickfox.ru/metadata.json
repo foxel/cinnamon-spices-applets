@@ -1,0 +1,5 @@
+{
+    "uuid": "nvidia-active@quickfox.ru",
+    "name": "NVIDIA Active",
+    "description": "Shows if NVIDIA GPU is active."
+}
